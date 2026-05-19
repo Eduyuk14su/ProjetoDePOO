@@ -1,91 +1,73 @@
 package model;
 
-public class Pedido {
-    private int id;
-    private int idCliente;
-    private int idRestaurante;
-    private int idEntregador;
-    private String statusPedido;
-    private String dataHoraPedido;
-    private double subtotal;
-    private double desconto;
-    private double taxaEntrega;
-    private double valorFinal;
+// Herança
+public class ItemEstoque {
 
-    // GETTERS E SETTERS
+    protected int id;
+    protected String nome;
+    protected String descricao;
+    protected double preco;
+    protected int quantidade;
+
+    // ID
     public int getId() {
         return id;
     }
     public void setId(int id) {
-        this.id = id;
-    }
-    public int getIdCliente() {
-        return idCliente;
-    }
-    public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
-    }
-    public int getIdRestaurante() {
-        return idRestaurante;
-    }
-    public void setIdRestaurante(int idRestaurante) {
-        this.idRestaurante = idRestaurante;
-    }
-    public int getIdEntregador() {
-        return idEntregador;
-    }
-    public void setIdEntregador(int idEntregador) {
-        this.idEntregador = idEntregador;
-    }
-    public String getStatusPedido() {
-        return statusPedido;
-    }
-    public void setStatusPedido(String statusPedido) {
-        this.statusPedido = statusPedido;
-    }
-    public String getDataHoraPedido() {
-        return dataHoraPedido;
-    }
-    public void setDataHoraPedido(String dataHoraPedido) {
-        this.dataHoraPedido = dataHoraPedido;
-    }
-    public double getSubtotal() {
-        return subtotal;
-    }
-    public void setSubtotal(double subtotal) {
-        this.subtotal = subtotal;
-    }
-    public double getDesconto() {
-        return desconto;
-    }
-    public void setDesconto(double desconto) {
-        this.desconto = desconto;
-    }
-    public double getTaxaEntrega() {
-        return taxaEntrega;
-    }
-    public void setTaxaEntrega(double taxaEntrega) {
-        this.taxaEntrega = taxaEntrega;
-    }
-    public double getValorFinal() {
-        return valorFinal;
-    }
-    public void setValorFinal(double valorFinal) {
-        this.valorFinal = valorFinal;
+        if (id > 0) {
+            this.id = id;
+        } else {
+            System.out.println("ID inválido!");
+        }
     }
 
-    // CALCULAR TOTAL
-    public void calcularTotal() {
-        if (subtotal > 300) {
-            desconto = subtotal * 0.15;
-        } else if (subtotal > 200) {
-            desconto = subtotal * 0.10;
-        } else if (subtotal > 100) {
-            desconto = subtotal * 0.05;
+    // NOME
+    public String getNome() {
+        return nome;
+    }
+    public void setNome(String nome) {
+        if (nome != null && nome.length() <= 100) {
+            this.nome = nome;
         } else {
-            desconto = 0;
+
+            System.out.println("Nome inválido!");
         }
-        taxaEntrega = 8;
-        valorFinal = subtotal - desconto + taxaEntrega;
+    }
+
+    // DESCRIÇÃO
+    public String getDescricao() {
+        return descricao;
+    }
+    public void setDescricao(String descricao) {
+        if (descricao != null && descricao.length() <= 255) {
+            this.descricao = descricao;
+        } else {
+            System.out.println("Descrição muito grande!");
+        }
+    }
+
+    // PREÇO
+    public double getPreco() {
+        return preco;
+    }
+    public void setPreco(double preco) {
+        if (preco > 0) {
+            this.preco = preco;
+        } else {
+            System.out.println("Preço inválido!");
+        }
+    }
+
+    // QUANTIDADE
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        if (quantidade >= 0) {
+            this.quantidade = quantidade;
+        } else {
+            System.out.println("Quantidade inválida!");
+        }
     }
 }

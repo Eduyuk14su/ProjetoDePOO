@@ -1,30 +1,40 @@
 package model;
 
-public class Restaurante {
+public class Produto extends ItemEstoque {
 
-    private int id;
-    private String nome;
-    private String telefone;
-    private String endereco;
-    private String cnpj;
-    private String categoriaculinaria;
+    private String descricao;
+    private int idRestaurante;
 
-    //Getter e Setters
-    public int getId() {return id;}
-    public void setId(int id) {this.id = id;}
-
-    public String getNome() {return nome;}
-    public void setNome(String nome) {this.nome = nome;}
+    // DESCRIÇÃO
+    public String getDescricao() {
+        return descricao;
+    }
+    public void setDescricao(String descricao) {
+        if (descricao != null && descricao.length() <= 255) {
+            this.descricao = descricao;
+        } else {
+            System.out.println("Descrição inválida!");
+        }
+    }
     
-    public String getTelefone() {return telefone;}
-    public void setTelefone(String telefone) {this.telefone = telefone;}
+    // ID RESTAURANTE
+    public int getIdRestaurante() {
+        return idRestaurante;
+    }
+    public void setIdRestaurante(int idRestaurante) {
+        if (idRestaurante > 0) {
+            this.idRestaurante = idRestaurante;
+        } else {
+            System.out.println("ID do restaurante inválido!");
+        }
+    }
 
-    public String getEndereco() {return endereco;}
-    public void setEndereco(String endereco) {this.endereco = endereco;}
+    // POLIMORFISMO
+    @Override
+    public String toString() {
 
-    public String getCnpj() {return cnpj; }
-    public void setCnpj(String cnpj) {this.cnpj = cnpj;}
-    
-    public String getCategoriaCulinaria() {return categoriaculinaria;}
-    public void setCategoriaCulinaria(String categoriaculinaria) {this.categoriaculinaria = categoriaculinaria;}
+        return "Produto: " + nome +
+               " | Preço: R$ " + preco +
+               " | Quantidade: " + quantidade;
+    }
 }
